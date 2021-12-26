@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "625268307421",
+    "project_id": "kolachi-6fdb1",
+    "storage_bucket": "kolachi-6fdb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625268307421:android:37c3122197ab4b18df3234",
+        "android_client_info": {
+          "package_name": "com.example.fb_login_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625268307421-vemgas62ir4ked8cdc090t0nqjl6dpum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fb_login_app",
+            "certificate_hash": "98febfd0c7e24535f4dad966905d020c5a48b7fd"
+          }
+        },
+        {
+          "client_id": "625268307421-2gfp2tea27lh27n6i1clikmsda08gp51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABgAXaSBR1ZHDP6BRSR4wmO9pwdnG0cRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625268307421-2gfp2tea27lh27n6i1clikmsda08gp51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
