@@ -5,7 +5,7 @@ class UserInfoModel {
   late final String name;
   late final String email;
   late final String uid;
-  late String profilePic = "/Profile Pics/download.jfif";
+  late String profilePic = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
 
   UserInfoModel({required this.name, required this.email, required this.uid});
 
