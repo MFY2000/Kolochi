@@ -17,50 +17,55 @@ class SocialMedia extends StatefulWidget {
 }
 
 class _SocialMediaState extends State<SocialMedia> {
+  bool condition = true;
   AuthClass auth = AuthClass();
 
-  
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: getSize(false, .03),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(
-              getSize(false, .001),
+    return condition
+        ? Padding(
+            padding: EdgeInsets.only(
+              top: getSize(false, .03),
             ),
-            child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.isSignIN
-                        ? "Already have an account ? "
-                        : "Don't have an account ? ",
-                    style: Theme.of(context).textTheme.bodyText1,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(
+                    getSize(false, .001),
                   ),
-                  GestureDetector(
-                      onTap: () {
-                        goToOtherRouter(
-                            widget.isSignIN ? const SignInSrceen() : const SignUpSrceen());
-                      },
-                      child: Text(widget.isSignIN ? "Signin" : "Signup"))
-                ]),
-          ),
-          SizedBox(
-            height: getSize(false, .07),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [getButton(true), getButton(false)],
+                  child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          widget.isSignIN
+                              ? "Already have an account ? "
+                              : "Don't have an account ? ",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        GestureDetector(
+                            onTap: () {
+                              goToOtherRouter(widget.isSignIN
+                                  ? const SignInSrceen()
+                                  : const SignUpSrceen());
+                            },
+                            child: Text(widget.isSignIN ? "Signin" : "Signup"))
+                      ]),
+                ),
+                SizedBox(
+                  height: getSize(false, .07),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [getButton(true), getButton(false)],
+                )
+              ],
+            ),
           )
-        ],
-      ),
-    );
+        : Center(
+            child: CircularProgressIndicator(),
+          );
   }
 
   getButton(bool isFacebook) {
@@ -77,7 +82,13 @@ class _SocialMediaState extends State<SocialMedia> {
     );
 
     toReturn = GestureDetector(
-      onTap: () {isFacebook? (){} : auth.googleSignIn(context);},
+      onTap: () {
+        setState(() {
+          condition = false;
+        });
+        
+        isFacebook ? () {} : auth.googleSignIn(context);
+      },
       child: Container(
         decoration: BoxDecoration(
             gradient: primaryGradient, boxShadow: [getShadow(primaryColor)]),

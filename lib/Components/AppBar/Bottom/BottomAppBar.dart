@@ -90,7 +90,7 @@ class _BottomNavBarStyleState extends State<BottomNavBarStyle> {
           gradient: kPrimaryGradientColor,
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
-        drawer: const CustomDrawer(),
+        drawer: const CustomDrawer(index: 1,),
         child: Scaffold(
           appBar: AppBar(
             leading: IconButton(

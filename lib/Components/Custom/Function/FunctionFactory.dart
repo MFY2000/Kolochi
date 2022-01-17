@@ -103,14 +103,12 @@ setUserInfo(UserCredential user) async {
     "profilePic": user.user!.photoURL
   });
 
-  createNewUder(data, user.user!.uid);
+  await createNewUder(data, user.user!.uid);
 }
 
 createNewUder(var data, var id) async {
-  String apiRoute = api_POST_UserDetails;
-
-  await postApi(api_POST_UserDetails, data);
-  postApi(api_POST_Favourite, jsonEncode({"userId": id, "products": []}));
-  postApi(api_POST_Favourite, jsonEncode({"userId": id, "products": []}));
-  postApi(api_POST_Address, jsonEncode({"userId": id, "Address": []}));
+        postApi(api_POST_UserDetails, data);
+  await postApi(api_POST_Favourite, jsonEncode({"userId": id, "products": []}));
+  await postApi(api_POST_Cart, jsonEncode({"userId": id, "products": []}));
+  await postApi(api_POST_Address, jsonEncode({"userId": id, "Address": []}));
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:fb_login_app/Services/Auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_login_app/Components/Custom/Button/ButtonColored.dart';
 import 'package:fb_login_app/Components/Custom/Button/DottedOutline.dart';
@@ -60,7 +61,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onTap: () {},
                 title: Text('Settings'),
               ),
-              
+              InkWell(
+                onTap: () async {
+                  await AuthClass().signOut(context: context);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: getSize(true, 0.4),
+                  padding: EdgeInsets.all(getSize(true, 0.025)),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: kPrimaryColor, width: 2)),
+                  child: const Text(
+                    "Logout",
+                    style: TextStyle(color: kPrimaryColor),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

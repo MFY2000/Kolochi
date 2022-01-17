@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fb_login_app/API/API_Route.dart';
+import 'package:fb_login_app/API/PostAPI.dart';
 import 'package:fb_login_app/API/getApi.dart';
 import 'package:fb_login_app/Components/Custom/Function/FunctionFactory.dart';
 import 'package:fb_login_app/Model/ModelClasses.dart';
@@ -18,17 +19,22 @@ late OrderDetails orderDetails = OrderDetails();
 late CreateAddressModel newAddressModel;
 
 getProductData() async {
-    topPromoList = await getProduct(api_GET_Product + "?new=TRUE");
+  topPromoList = await getProduct(api_GET_Product + "?new=TRUE");
   productsList = await getProduct(api_GET_Product);
+  getDataOfProductDetailsModel(await getApi(api_GET_Product));
 }
 
 Future<bool> readJson() async {
   getDataOfFavourite(await getApi(api_GET_Favourite + currentUser.id));
   getDataOfCart(await getApi(api_GET_Cart + currentUser.id));
 
-  currentUser.address = getDataOfAddress(await getApi(api_GET_Address + currentUser.id));
-  getDataOfProductDetailsModel(await getApi(api_GET_Product));
+  currentUser.address =
+      getDataOfAddress(await getApi(api_GET_Address + currentUser.id));
 
+
+  if(currentUser.cartsId.isEmpty || currentUser.favouriteId.isEmpty){
+    await readJson();
+  }
   return true;
 }
 
@@ -54,16 +60,18 @@ getUserInforamtion(var data) {
 
 getDataOfAddress(var data) {
   List<AdressModel> toReturn = [];
-  currentUser.addressID = data["_id"];
+  if (data != null) {
+    currentUser.addressID = data["_id"];
 
-  for (var item in data["Address"]) {
-    toReturn.add(AdressModel(
-        name: item["Clientname"],
-        aid: item["aid"],
-        addressLane: item["addressLane"],
-        city: item["city"],
-        phoneNumber: item["phoneNumber"],
-        postalCode: item["postalCode"]));
+    for (var item in data["Address"]) {
+      toReturn.add(AdressModel(
+          name: item["Clientname"],
+          aid: item["aid"],
+          addressLane: item["addressLane"],
+          city: item["city"],
+          phoneNumber: item["phoneNumber"],
+          postalCode: item["postalCode"]));
+    }
   }
   return toReturn;
 }
@@ -116,25 +124,35 @@ getDataOfProductDetailsModel(var data) async {
 
 getDataOfFavourite(var data) {
   favouriteList = [];
-  currentUser.favouriteId = data["_id"];
+  if (data != null) {
+    currentUser.favouriteId = data["_id"];
 
-  for (var i in data["products"]) {
-    for (var j in productsList) {
-      if (i == j.pid) {
-        !favouriteList.contains(j) ? favouriteList.add(j) : null;
-        j.isFavourite = true;
+    for (var i in data["products"]) {
+      for (var j in productsList) {
+        if (i == j.pid) {
+          !favouriteList.contains(j) ? favouriteList.add(j) : null;
+          j.isFavourite = true;
+        }
       }
     }
+  } else {
+    postApi(api_POST_Favourite,
+        jsonEncode({"userId": currentUser.id, "products": []}));
   }
 }
 
 getDataOfCart(var data) {
   cartList = [];
-  currentUser.cartsId = data["_id"];
+  if (data != null) {
+    currentUser.cartsId = data["_id"];
 
-  for (var item in data["products"]) {
-    cartList.add(CartsDetailsModel(
-        item["productId"], item["quantity"], item["size"], item["color"]));
+    for (var item in data["products"]) {
+      cartList.add(CartsDetailsModel(
+          item["productId"], item["quantity"], item["size"], item["color"]));
+    }
+  } else {
+    postApi(api_POST_Favourite,
+        jsonEncode({"userId": currentUser.id, "products": []}));
   }
 }
 

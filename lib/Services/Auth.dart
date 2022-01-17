@@ -30,7 +30,7 @@ class AuthClass {
             await _auth.signInWithCredential(credential);
         storeTokenAndData(userCredential);
 
-        setUserInfo(userCredential);
+        await setUserInfo(userCredential);
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(

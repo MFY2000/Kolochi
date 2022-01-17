@@ -29,7 +29,7 @@ class TopAppBarState extends State<TopAppBar> {
           gradient: kPrimaryGradientColor,
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
-        drawer: const CustomDrawer(),
+        drawer: CustomDrawer(index: widget.index,),
         child: Scaffold(
           appBar: AppBar(
             leading: IconButton(

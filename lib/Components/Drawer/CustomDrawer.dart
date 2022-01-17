@@ -1,9 +1,12 @@
+import 'package:fb_login_app/Components/AppBar/Top/AppBar.dart';
+import 'package:fb_login_app/Pages/Cart/CartDetails.dart';
+import 'package:fb_login_app/Pages/Favourite/FavouriteScreen.dart';
+import 'package:fb_login_app/Pages/Home/Components/HomeBody.dart';
+import 'package:fb_login_app/Pages/Home/Profile.dart';
 import 'package:fb_login_app/Services/Auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fb_login_app/Components/Custom/Button/DottedOutline.dart';
 import 'package:fb_login_app/Config/constants.dart';
 import 'package:fb_login_app/Config/size_config.dart';
-import 'package:fb_login_app/Config/theme.dart';
 import 'package:fb_login_app/Model/ModelFactory.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -42,61 +45,39 @@ class CustomDrawer extends StatelessWidget {
                   style: const TextStyle(
                       color: kPrimaryLightColor, fontSize: headingfontSize),
                 )),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.home_outlined),
-              title: Text('Home'),
-            ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.person_outline),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.shopping_bag_outlined),
-              title: Text('My Cart'),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(width: 1, color: kPrimaryLightColor),
-              )),
-            ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.favorite_border),
-              title: Text('Favourites'),
-            ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.shopping_cart_outlined),
-              title: Text('My Order'),
-            ),
+            getNavItem(context, Icons.home_outlined, 'Home', HomeBody(), 2),
+            getNavItem(context, Icons.person_outline, 'Profile', Profile(), 4),
+            getNavItem(context, Icons.shopping_bag_outlined, 'My Cart',
+                CartDetails(), index),
             Container(
               decoration: const BoxDecoration(
                   border: Border(
                 bottom: BorderSide(width: 1, color: kPrimaryLightColor),
               )),
             ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.euro_symbol),
-              title: Text('Language'),
+            getNavItem(context, Icons.favorite_border, 'Favourites',
+                FavouriteScreen(), index),
+            getNavItem(context, Icons.shopping_cart_outlined, 'My Order',
+                Container(), index),
+            Container(
+              decoration: const BoxDecoration(
+                  border: Border(
+                bottom: BorderSide(width: 1, color: kPrimaryLightColor),
+              )),
             ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.settings_outlined),
-              title: Text('Settings'),
-            ),
+            getNavItem(context, Icons.euro_symbol, 'Language', Container(), index),
+            getNavItem(
+                context, Icons.settings_outlined, 'Settings', Container(), index),
             InkWell(
-              onTap: () async { await AuthClass().signOut(context: context); },
+              onTap: () async {
+                await AuthClass().signOut(context: context);
+              },
               child: Container(
                 alignment: Alignment.center,
                 width: getSize(true, 0.2),
                 padding: EdgeInsets.all(getSize(true, 0.025)),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(15),
                     border: Border.all(color: kPrimaryLightColor, width: 2)),
                 child: const Text(
                   "Logout",
@@ -121,5 +102,19 @@ class CustomDrawer extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  toGoPath(BuildContext context, Widget screen) {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => screen));
+  }
+
+  getNavItem(BuildContext context, IconData icon, String name, Widget screen,
+      int index) {
+    return ListTile(
+      onTap: () => toGoPath(context, TopAppBar(body: screen, index: index)),
+      leading: Icon(icon, size: kiconSize),
+      title: Text(name),
+    );
   }
 }

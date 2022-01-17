@@ -30,10 +30,10 @@ class _SplashScreenState extends State<SplashScreen>
     return Timer(_duration, navigationPage);
   }
 
-  void navigationPage() {
+  void navigationPage() async {
     // FirebaseAuth.instance.currentUser!
 
-    isUserLogin ? getUser(FirebaseAuth.instance.currentUser!.uid) : null;
+    isUserLogin ? await getUser(FirebaseAuth.instance.currentUser!.uid) : null;
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext buildContext) =>
             isUserLogin ? const MainScreen() : const IntroSrceen()));
