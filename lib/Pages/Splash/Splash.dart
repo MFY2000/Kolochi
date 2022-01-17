@@ -3,10 +3,10 @@
 import 'dart:async';
 
 import 'package:fb_login_app/Config/size_config.dart';
-import 'package:fb_login_app/Pages/Home/HomeScreen.dart';
+import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:fb_login_app/Pages/Login/Intro/Introduction.dart';
+import 'package:fb_login_app/Pages/MainScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,7 +23,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   late AnimationController animationController;
   late Animation<double> animation;
-
   startTime() async {
     var _duration = const Duration(seconds: 5);
     isUserLogin = FirebaseAuth.instance.currentUser != null;
@@ -31,9 +30,12 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void navigationPage() {
+
+    // FirebaseAuth.instance.currentUser!
+
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext buildContext) => isUserLogin
-            ? HomeScreen(user: FirebaseAuth.instance.currentUser!)
+            ? MainScreen()
             : const IntroSrceen()));
   }
 
@@ -51,6 +53,7 @@ class _SplashScreenState extends State<SplashScreen>
     setState(() {
       _visible = !_visible;
     });
+    readJson();
     startTime();
   }
 
