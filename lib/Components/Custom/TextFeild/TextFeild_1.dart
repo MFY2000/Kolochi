@@ -56,3 +56,58 @@ class _TextFeild1State extends State<TextFeild1> {
         ));
   }
 }
+
+
+
+class TextFeild2 extends StatefulWidget {
+  final TextFeildModel reference;
+  const TextFeild2({required this.reference, Key? key}) : super(key: key);
+
+  @override
+  _TextFeild2State createState() => _TextFeild2State();
+}
+
+class _TextFeild2State extends State<TextFeild2> {
+  late TextFeildModel ref;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ref = widget.reference;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: getSize(false, 0.05),
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.zero,
+        margin: EdgeInsets.zero,
+        child: TextField(
+          onChanged: (String value) {
+            setState(() {
+              ref.isError = value.isEmpty;
+            });
+            ref.onChange(value);
+          },
+          controller: ref.control,
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.all(0),
+            hintText: ref.label,
+            hintStyle: const TextStyle(fontSize: 10),
+            alignLabelWithHint: true,
+            errorText: widget.reference.isError ? ref.errorMessage : null,
+            enabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Color(0XFFE0E0E0))),
+            focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffbdbdbd))),
+            errorBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.red)),
+            focusedErrorBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.red)),
+          ),
+          textInputAction: TextInputAction.next,
+        ));
+  }
+}
