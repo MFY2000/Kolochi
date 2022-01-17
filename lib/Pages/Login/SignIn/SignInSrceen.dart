@@ -7,13 +7,12 @@ import 'package:fb_login_app/Components/Custom/TextFeild/TextFeild_1.dart';
 import 'package:fb_login_app/Config/Validition.dart';
 import 'package:fb_login_app/Config/size_config.dart';
 import 'package:fb_login_app/Model/TextFeildModel.dart';
-import 'package:fb_login_app/Model/UserInfo.dart';
-import 'package:fb_login_app/Pages/Home/HomeScreen.dart';
+import 'package:fb_login_app/Model/ModelClasses.dart';
 import 'package:fb_login_app/Pages/Login/SignIn/ForgetPassword.dart';
 import 'package:fb_login_app/Pages/Login/SocialMeida/SocialMedia.dart';
+import 'package:fb_login_app/Pages/MainScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 class SignInSrceen extends StatefulWidget {
   const SignInSrceen({Key? key}) : super(key: key);
@@ -119,14 +118,13 @@ class _SignInSrceenState extends State<SignInSrceen> {
           .signInWithEmailAndPassword(
               email: controller[0].value, password: controller[1].value);
 
-      UserInfoModel.thirdInfo(userCredential.user!.uid);
-      
+      // UserInfoModel.thirdInfo(userCredential.user!.uid);
+
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (BuildContext context) =>
-                  HomeScreen(user: userCredential.user!)));
-
+                  MainScreen())); // HomeScreen(user: userCredential.user!)));
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
