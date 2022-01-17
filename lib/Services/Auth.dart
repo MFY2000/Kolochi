@@ -1,4 +1,4 @@
-import 'package:fb_login_app/Pages/Home/HomeScreen.dart';
+import 'package:fb_login_app/Pages/MainScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -27,10 +27,12 @@ class AuthClass {
         UserCredential userCredential =
             await _auth.signInWithCredential(credential);
         storeTokenAndData(userCredential);
-        
+
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (builder) => HomeScreen(user: userCredential.user!)),
+            MaterialPageRoute(
+                builder: (builder) =>
+                    MainScreen()), // HomeScreen(user: userCredential.user!)),
             (route) => false);
 
         final snackBar =
