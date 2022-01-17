@@ -5,14 +5,14 @@ import 'constants.dart';
 
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    fontFamily: "Overlook",
-    appBarTheme: appBarTheme(),
-    textTheme: textTheme(),
-    inputDecorationTheme: inputDecorationTheme(),
-    visualDensity: VisualDensity.adaptivePlatformDensity,
-    floatingActionButtonTheme: getFloatingButton()
-  );
+      scaffoldBackgroundColor: kPrimaryLightColor,
+      primaryColor: kPrimaryColor,
+      fontFamily: "Overlook",
+      appBarTheme: appBarTheme(),
+      textTheme: textTheme(),
+      inputDecorationTheme: inputDecorationTheme(),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      floatingActionButtonTheme: getFloatingButton());
 }
 
 InputDecorationTheme inputDecorationTheme() {
@@ -34,7 +34,6 @@ TextTheme textTheme() {
   return const TextTheme(
     button: TextStyle(
       color: kPrimaryLightColor,
-
     ),
     headline1: headingStyle,
     headline2: TextStyle(
@@ -43,24 +42,35 @@ TextTheme textTheme() {
       fontSize: headingfontSize,
       height: 1,
     ),
+    headline3: TextStyle(
+      color: khighLightColor,
+      fontFamily: "Times New Roman",
+      fontSize: headingfontSize - 4,
+      height: 1,
+    ),
+    headline4: TextStyle(
+      color: kHeading,
+      fontFamily: "Times New Roman",
+      fontSize: headingfontSize - 8,
+      height: 1,
+      decoration: TextDecoration.lineThrough,
+    ),
     bodyText1: TextStyle(
+      fontFamily: "Times New Roman",
       color: kTextColor,
       fontSize: fontSize - 2,
-
     ),
-    bodyText2: TextStyle(color: kTextColor, fontSize: fontSize),
+    bodyText2: TextStyle(
+        fontFamily: "Times New Roman", color: kHeading, fontSize: fontSize),
   );
 }
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    color: Colors.black,
-    elevation: 6,
-    iconTheme: IconThemeData(color: Colors.black),
-    textTheme: TextTheme(
-      headline6: TextStyle(color: Color(0XFF8B8B8B), fontSize: 18),
-    ),
-  );
+      elevation: 0,
+      iconTheme: IconThemeData(color: kSecondaryColor),
+      backgroundColor: kPrimaryLightColor,
+      shadowColor: kPrimaryColor);
 }
 
 BoxShadow getShadow(Color colorTo) {
@@ -72,9 +82,13 @@ BoxShadow getShadow(Color colorTo) {
   );
 }
 
-getFloatingButton(){
-  return FloatingActionButtonThemeData(
-    backgroundColor: kPrimaryLightColor
-     
-  ); 
+getFloatingButton() {
+  return FloatingActionButtonThemeData(backgroundColor: kPrimaryLightColor);
+}
+
+getBottomBorder() {
+  return BoxDecoration(
+      border: Border(
+    bottom: BorderSide(width: 1, color: Colors.grey.shade600),
+  ));
 }
