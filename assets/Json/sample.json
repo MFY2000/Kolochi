@@ -1,0 +1,188 @@
+{
+  "ProductInformation": [
+    {
+      "_id": "001",
+      "title": "Halloweeen Offer",
+      "subTitle": "25% off in \nour All product",
+      "desciption": "25% off in our All product25% off in our All product25% off in our All product25% off in our All product25% off in our All product",
+      "price": 8.1,
+      "imagesList": [
+        "assets/images/Sample.png"
+      ],
+      "rating": 3.5,
+      "isAssets": true,
+      "image": "assets/images/Sample.png",
+      "isFavourite": false,
+      "afterPrice": 9.5,
+      "noReview": [
+        {
+          "reviewId": "1",
+          "name": "fahad",
+          "reviewDetails": "all are good",
+          "profilePic": "https://images.pexels.com/photos/1987301/pexels-photo-1987301.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+        }
+      ],
+      "avialableColors": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "avialableSize": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "tags": [
+        "T-shirt",
+        "Male",
+        "Man"
+      ]
+    },
+    {
+      "_id": "002",
+      "title": "New Year",
+      "subTitle": "Men shit",
+      "desciption": "Table of Contents How type ‘List’ is not a subtype of type ‘List’ in Flutter error occur? How to solve type ‘List’ is not a subtype of type ‘List’ in Flutter error? Solution 1 : Provide type argument to the map method.Solution 2 : Converting Map to Widget Solution 3 : Cast dynamic List to List With specific Type Also Read",
+      "price": 8.1,
+      "imagesList": [
+        "assets/images/j1.png",
+        "assets/images/j2.png",
+        "assets/images/j3.png"
+      ],
+      "rating": 3.5,
+      "isAssets": true,
+      "image": "assets/images/j1.png",
+      "isFavourite": false,
+      "afterPrice": 9.5,
+      "noReview": [
+        {
+          "reviewId": "1",
+          "name": "fahad",
+          "reviewDetails": "all are good",
+          "profilePic": "https://images.pexels.com/photos/1987301/pexels-photo-1987301.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+        }
+      ],
+      "avialableColors": [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "avialableSize": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "tags": [
+        "pant",
+        "Male",
+        "Man"
+      ]
+    },
+    {
+      "_id": "003",
+      "title": "abcks",
+      "subTitle": "amkcca salsc",
+      "desciption": "s,l;amcksclam;,as;fs,a.,XlmsapcmKVMD  WJCOIFOJ CMQJPOFMLKKFJPSJFKADJFLKMPKLD;.ANONLFNLAfpijfkqEFMACLKNxL;aignDS.NOIFNAkk'I WPJLNDL;nf ;w9wrqjoijfana;oinlkafn;ljiueghlknf;ladfoiaEREJJTP;Jfapjucacnaldngouhv;oi",
+      "price": 8.1,
+      "imagesList": [
+        "https://static.fibre2fashion.com/MemberResources/LeadResources/1/2018/4/Seller/18144566/Images/18144566_0_casual-shirt-for-men.jpg"
+      ],
+      "rating": 3.5,
+      "isAssets": false,
+      "image": "https://static.fibre2fashion.com/MemberResources/LeadResources/1/2018/4/Seller/18144566/Images/18144566_0_casual-shirt-for-men.jpg",
+      "isFavourite": false,
+      "afterPrice": 9.5,
+      "noReview": [
+        {
+          "reviewId": "1",
+          "name": "fahad",
+          "reviewDetails": "all are good",
+          "profilePic": "https://images.pexels.com/photos/1987301/pexels-photo-1987301.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+        }
+      ],
+      "avialableColors": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "avialableSize": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "tags": [
+        "T-shirt",
+        "Male",
+        "Man"
+      ]
+    }
+  ],
+  "UserInfor": {
+    "uid": "asfnkaaspfs74sa",
+    "name": "Muhammad Fahad",
+    "email": "f@g.com",
+    "profile": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_U4D9vI7TukMPMsH7AiBItemQXeIF_3qeHQ&usqp=CAU",
+    "Address": [
+      {
+        "name":"claas",
+        "aid": "653131321aa",
+        "addressLane": "4th floor yousaf mazila bhimpura, ",
+        "city": "karachi",
+        "postalCode": "1582",
+        "phoneNumber": "0345-2849128"
+      },
+      {
+        "name":"fahad",
+        "aid": "ca,s;ls;cm;lacm;cA",
+        "addressLane": "mazila bhimpura, ",
+        "city": "karachi",
+        "postalCode": "1582",
+        "phoneNumber": "0345-2849128"
+      },
+      {
+        "name":"ndnd ,mdwq wdq",
+        "aid": "SLJFLJAJLKNXCLANC,XNLn,",
+        "addressLane": "123 Main Street, ",
+        "city": "karachi",
+        "postalCode": "1582",
+        "phoneNumber": "0345-2849128"
+      }
+    ],
+    "Favourite": {
+      "pid": [
+        "001",
+        "002"
+      ]
+    },
+    "AddToCart": {
+      "pid": [
+        1,
+        2
+      ],
+      "quantity": [
+        10,
+        1
+      ],
+      "size": [
+        3,
+        0
+      ],
+      "color": [
+        1,
+        2
+      ]
+    }
+  }
+}

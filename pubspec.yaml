@@ -40,7 +40,6 @@ dependencies:
   provider: ^6.0.1
   cloud_firestore: ^3.1.5
   flutter_secure_storage: ^5.0.2
-  flutter_facebook_auth: ^3.5.7
   dotted_border: ^2.0.0+2
   http: ^0.13.4
   dcdg: ^4.0.0
@@ -55,14 +54,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.9.2
-
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/ic_launcher/play_store_512.png"
-  adaptive_icon_forground: "assets/ic_launcher/1024.png1024.png"
-  adaptive_icon_background: "#FFFFFF"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -82,12 +73,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  assets:
+  # To add assets to your application, add an assets section, like this:
+  assets:  
     - assets/images/
     - assets/images/logo/
     - assets/images/icons/
     - assets/ic_launcher/
-  # To add assets to your application, add an assets section, like this:
+    - assets/Json/sample.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
