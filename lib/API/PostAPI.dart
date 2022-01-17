@@ -9,3 +9,11 @@ updateApi(String route, data) async {
     body: data,
   );
 }
+
+postApi(String route, data) async {
+  return await http.post(
+    Uri.parse(route),
+    headers: {"Content-Type" : "application/json"},
+    body: data,
+  );
+}

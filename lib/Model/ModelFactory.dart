@@ -18,22 +18,21 @@ late OrderDetails orderDetails = OrderDetails();
 late CreateAddressModel newAddressModel;
 
 Future<bool> readJson() async {
-  final String response =
-      await rootBundle.loadString('assets/Json/sample.json');
-  final data = await json.decode(response);
-
-  getUserInforamtion(await getApi(api_GET_UserDetails + "klsvlndslamfdlmmsf"));
+  getUser("klsvlndslamfdlmmsf");
   topPromoList = await getProduct(api_GET_Product + "?new=TRUE");
   productsList = await getProduct(api_GET_Product);
 
   getDataOfFavourite(await getApi(api_GET_Favourite + currentUser.id));
   getDataOfCart(await getApi(api_GET_Cart + currentUser.id));
 
-  currentUser.address =
-      getDataOfAddress(await getApi(api_GET_Address + currentUser.id));
+  currentUser.address = getDataOfAddress(await getApi(api_GET_Address + currentUser.id));
   getDataOfProductDetailsModel(await getApi(api_GET_Product));
 
   return true;
+}
+
+getUser(String uid) async {
+  getUserInforamtion(await getApi(api_GET_UserDetails + uid));
 }
 
 getProduct(String apiRoute) async {

@@ -1,3 +1,4 @@
+import 'package:fb_login_app/Services/Auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_login_app/Components/Custom/Button/DottedOutline.dart';
 import 'package:fb_login_app/Config/constants.dart';
@@ -87,16 +88,19 @@ class CustomDrawer extends StatelessWidget {
               leading: Icon(Icons.settings_outlined),
               title: Text('Settings'),
             ),
-            Container(
-              alignment: Alignment.center,
-              width: getSize(true, 0.2),
-              padding: EdgeInsets.all(getSize(true, 0.025)),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: kPrimaryLightColor, width: 2)),
-              child: const Text(
-                "Logout",
-                style: TextStyle(color: kPrimaryLightColor),
+            InkWell(
+              onTap: () async { await AuthClass().signOut(context: context); },
+              child: Container(
+                alignment: Alignment.center,
+                width: getSize(true, 0.2),
+                padding: EdgeInsets.all(getSize(true, 0.025)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: kPrimaryLightColor, width: 2)),
+                child: const Text(
+                  "Logout",
+                  style: TextStyle(color: kPrimaryLightColor),
+                ),
               ),
             ),
             Spacer(),

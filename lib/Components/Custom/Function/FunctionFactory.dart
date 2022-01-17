@@ -5,6 +5,7 @@ import 'package:fb_login_app/API/API_Route.dart';
 import 'package:fb_login_app/API/PostAPI.dart';
 import 'package:fb_login_app/Model/ModelClasses.dart';
 import 'package:fb_login_app/Model/ModelFactory.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 bool isAlreadyCart(String pid, int i, int j) {
   bool toReturn = false;
@@ -66,9 +67,7 @@ favourite(int index, bool condition) {
   updateApi(apiRoute, data);
 }
 
-
-
-carts(){
+carts() {
   String apiRoute = api_POST_Cart + currentUser.cartsId;
 
   List<Map<String, dynamic>> list = [];
@@ -94,4 +93,18 @@ getValueFromList(var data) {
     toReturn.add(item.pid);
   }
   return toReturn;
+}
+
+setUserInfo(UserCredential user) async {
+  var data = jsonEncode({
+    "username": user.user!.displayName,
+    "email": user.user!.email,
+    "uid": user.user!.uid,
+    "profilePic": user.user!.photoURL
+  });
+
+  String apiRoute = api_POST_UserDetails;
+
+  print(await postApi(apiRoute, data));
+  // await updateApi(apiRoute, data);
 }

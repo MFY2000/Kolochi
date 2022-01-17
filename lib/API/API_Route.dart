@@ -13,7 +13,7 @@ const api_GET_Review = server+"/review/find/";
 
 
 
-const api_POST_UserDetails = server+"/register/";
+const api_POST_UserDetails = server+"/auth/register/";
 const api_POST_Favourite = server+"/favourite/";
 const api_POST_Cart = server+"/carts/";
 const api_POST_Order = server+"/orders/";

@@ -1,3 +1,5 @@
+import 'package:fb_login_app/Components/Custom/Function/FunctionFactory.dart';
+import 'package:fb_login_app/Pages/Login/Intro/Introduction.dart';
 import 'package:fb_login_app/Pages/MainScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,8 @@ class AuthClass {
             await _auth.signInWithCredential(credential);
         storeTokenAndData(userCredential);
 
+        setUserInfo(userCredential);
+
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
@@ -51,6 +55,12 @@ class AuthClass {
       await _googleSignIn.signOut();
       await _auth.signOut();
       await storage.delete(key: "token");
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (builder) =>
+                  const IntroSrceen()), // HomeScreen(user: userCredential.user!)),
+          (route) => false);
     } catch (e) {
       final snackBar = SnackBar(content: Text(e.toString()));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);

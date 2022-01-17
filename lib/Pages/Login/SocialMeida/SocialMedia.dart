@@ -47,7 +47,7 @@ class _SocialMediaState extends State<SocialMedia> {
                         goToOtherRouter(
                             widget.isSignIN ? const SignInSrceen() : const SignUpSrceen());
                       },
-                      child: Text(widget.isSignIN ? "Signup" : "Signin"))
+                      child: Text(widget.isSignIN ? "Signin" : "Signup"))
                 ]),
           ),
           SizedBox(
