@@ -17,11 +17,12 @@ late UserInformation currentUser;
 late OrderDetails orderDetails = OrderDetails();
 late CreateAddressModel newAddressModel;
 
-Future<bool> readJson() async {
-  getUser("klsvlndslamfdlmmsf");
-  topPromoList = await getProduct(api_GET_Product + "?new=TRUE");
+getProductData() async {
+    topPromoList = await getProduct(api_GET_Product + "?new=TRUE");
   productsList = await getProduct(api_GET_Product);
+}
 
+Future<bool> readJson() async {
   getDataOfFavourite(await getApi(api_GET_Favourite + currentUser.id));
   getDataOfCart(await getApi(api_GET_Cart + currentUser.id));
 
@@ -33,6 +34,7 @@ Future<bool> readJson() async {
 
 getUser(String uid) async {
   getUserInforamtion(await getApi(api_GET_UserDetails + uid));
+  readJson();
 }
 
 getProduct(String apiRoute) async {

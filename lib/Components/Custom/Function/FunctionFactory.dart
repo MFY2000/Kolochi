@@ -105,6 +105,6 @@ setUserInfo(UserCredential user) async {
 
   String apiRoute = api_POST_UserDetails;
 
-  print(await postApi(apiRoute, data));
+  await postApi(apiRoute, data);
   // await updateApi(apiRoute, data);
 }

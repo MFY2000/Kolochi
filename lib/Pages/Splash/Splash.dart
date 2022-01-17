@@ -6,6 +6,7 @@ import 'package:fb_login_app/Config/size_config.dart';
 import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:fb_login_app/Pages/Login/Intro/Introduction.dart';
 import 'package:fb_login_app/Pages/MainScreen.dart';
+import 'package:fb_login_app/Services/Auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -31,8 +32,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   void navigationPage() {
     // FirebaseAuth.instance.currentUser!
-    // isUserLogin ? getUser(FirebaseAuth.instance.currentUser!.uid) : null;
 
+    isUserLogin ? getUser(FirebaseAuth.instance.currentUser!.uid) : null;
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext buildContext) =>
             isUserLogin ? const MainScreen() : const IntroSrceen()));
@@ -52,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen>
     setState(() {
       _visible = !_visible;
     });
-    readJson();
+    getProductData();
     startTime();
   }
 

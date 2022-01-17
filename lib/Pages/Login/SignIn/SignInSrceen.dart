@@ -2,12 +2,13 @@
 
 import 'package:fb_login_app/Components/Custom/Alert/AlertBox1.dart';
 import 'package:fb_login_app/Components/Custom/Button/ButtonColored.dart';
+import 'package:fb_login_app/Components/Custom/Function/FunctionFactory.dart';
 import 'package:fb_login_app/Components/Custom/TextFeild/PasswordFeild.dart';
 import 'package:fb_login_app/Components/Custom/TextFeild/TextFeild_1.dart';
 import 'package:fb_login_app/Config/Validition.dart';
 import 'package:fb_login_app/Config/size_config.dart';
+import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:fb_login_app/Model/TextFeildModel.dart';
-import 'package:fb_login_app/Model/ModelClasses.dart';
 import 'package:fb_login_app/Pages/Login/SignIn/ForgetPassword.dart';
 import 'package:fb_login_app/Pages/Login/SocialMeida/SocialMedia.dart';
 import 'package:fb_login_app/Pages/MainScreen.dart';
@@ -119,6 +120,8 @@ class _SignInSrceenState extends State<SignInSrceen> {
               email: controller[0].value, password: controller[1].value);
 
       // UserInfoModel.thirdInfo(userCredential.user!.uid);
+
+      getUser(userCredential.user!.uid);
 
       Navigator.pushReplacement(
           context,

@@ -31,7 +31,6 @@ class AuthClass {
         storeTokenAndData(userCredential);
 
         setUserInfo(userCredential);
-
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(

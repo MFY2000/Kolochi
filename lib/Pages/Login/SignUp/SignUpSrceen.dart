@@ -1,17 +1,21 @@
 // ignore_for_file: file_names
 
+import 'dart:convert';
+
+import 'package:fb_login_app/API/API_Route.dart';
+import 'package:fb_login_app/API/PostAPI.dart';
 import 'package:fb_login_app/Components/Custom/Alert/AlertBox1.dart';
 import 'package:fb_login_app/Components/Custom/Button/ButtonColored.dart';
+import 'package:fb_login_app/Components/Custom/Function/FunctionFactory.dart';
 import 'package:fb_login_app/Components/Custom/TextFeild/PasswordFeild.dart';
 import 'package:fb_login_app/Components/Custom/TextFeild/TextFeild_1.dart';
 import 'package:fb_login_app/Config/Validition.dart';
-import 'package:fb_login_app/Config/constants.dart';
 import 'package:fb_login_app/Config/size_config.dart';
+import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:fb_login_app/Model/TextFeildModel.dart';
-import 'package:fb_login_app/Model/ModelClasses.dart';
+import 'package:fb_login_app/Pages/Login/SignIn/SignInSrceen.dart';
 import 'package:fb_login_app/Pages/Login/SocialMeida/SocialMedia.dart';
 import 'package:fb_login_app/Pages/MainScreen.dart';
-import 'package:fb_login_app/Services/DB_Services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -77,12 +81,11 @@ class _SignUpSrceenState extends State<SignUpSrceen> {
     var isEmail = validtionConstantEmail(controller[1].value);
     var isPassword = validtionConstantPassword(controller[2].value);
 
-
-    if(isName[0]){
+    if (isName[0]) {
       setState(() {
         controller[0].isError = isName[0];
         controller[0].errorMessage = isName[1];
-        isError =  isName[0];
+        isError = isName[0];
       });
     }
 
@@ -90,19 +93,18 @@ class _SignUpSrceenState extends State<SignUpSrceen> {
       setState(() {
         controller[1].isError = isEmail[0];
         controller[1].errorMessage = isEmail[1];
-        isError =  isEmail[0];
+        isError = isEmail[0];
       });
     }
 
-    if(isPassword[0]){
+    if (isPassword[0]) {
       setState(() {
         controller[2].isError = isPassword[0];
         controller[2].errorMessage = isPassword[1];
-        isError =  isPassword[0];
+        isError = isPassword[0];
       });
     }
 
-   
     if (!isError) {
       onSigUp();
     }
@@ -114,20 +116,29 @@ class _SignUpSrceenState extends State<SignUpSrceen> {
           .createUserWithEmailAndPassword(
               email: controller[1].value, password: controller[2].value);
 
-      // (UserInfoModel(email: controller[1].value,name: controller[0].value,uid: userCredential.user!.uid)).StoreUserInfor();
+      var data = jsonEncode({
+        "username": controller[0].value,
+        "email": controller[1].value,
+        "uid": userCredential.user!.uid,
+      });
+
+      String apiRoute = api_POST_UserDetails;
+
+      await postApi(apiRoute, data);
 
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (BuildContext context) => MainScreen()));//(user: userCredential.user!)));
-    
+              builder: (BuildContext context) =>
+                  SignInSrceen())); //(user: userCredential.user!)));
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         alertBox1(
             context, "weak-password", "The password provided is too weak.");
       } else if (e.code == 'email-already-in-use') {
-        alertBox1(
-            context, "email-already-in-use", "The account already exists for that email.");
+        alertBox1(context, "email-already-in-use",
+            "The account already exists for that email.");
       }
     } catch (e) {
       print(e);
