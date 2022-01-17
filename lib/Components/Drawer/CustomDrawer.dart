@@ -7,7 +7,8 @@ import 'package:fb_login_app/Config/theme.dart';
 import 'package:fb_login_app/Model/ModelFactory.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({Key? key}) : super(key: key);
+  final int index;
+  const CustomDrawer({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +107,7 @@ class CustomDrawer extends StatelessWidget {
             Spacer(),
             DefaultTextStyle(
               style: const TextStyle(
-                fontSize: fontSize,
+                fontSize: 10,
                 color: kPrimaryLightColor,
               ),
               child: Container(
