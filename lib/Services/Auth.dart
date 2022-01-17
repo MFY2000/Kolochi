@@ -1,7 +1,6 @@
 import 'package:fb_login_app/Pages/Home/HomeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -72,25 +71,4 @@ class AuthClass {
     final snackBar = SnackBar(content: Text(text));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
-
-
-void LoginWithFacebook(BuildContext context) async {
-    try{
-      final facebookLoginResult = await FacebookAuth.instance.login();
-      final userData = await FacebookAuth.instance.getUserData();
-      final facebookAuthCredentials = FacebookAuthProvider.credential(facebookLoginResult.accessToken!.token);
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredentials);
-  Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (builder) => HomeScreen(user: userCredential.user!)),
-              (route) => false);
-
-    }catch (e) {
-      print("here---->");
-      final snackBar = SnackBar(content: Text(e.toString()));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
-  }
 }
-
-
