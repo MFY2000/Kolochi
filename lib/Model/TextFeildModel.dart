@@ -18,4 +18,8 @@ class TextFeildModel {
     value =  valueEnter;
     isFill = value.isNotEmpty;
   }
+
+  setControlValue(String value){
+    control.text = value;
+  }
 }
