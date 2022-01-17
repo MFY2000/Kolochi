@@ -33,7 +33,7 @@ Future<bool> readJson() async {
 }
 
 getUser(String uid) async {
-  getUserInforamtion(await getApi(api_GET_UserDetails + uid));
+  await getUserInforamtion(await getApi(api_GET_UserDetails + uid));
   readJson();
 }
 

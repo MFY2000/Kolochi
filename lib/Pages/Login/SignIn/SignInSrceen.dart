@@ -25,6 +25,7 @@ class SignInSrceen extends StatefulWidget {
 class _SignInSrceenState extends State<SignInSrceen> {
   List<TextFeildModel> controller = [];
   bool isError = false;
+  bool wait = true;
 
   @override
   void initState() {
@@ -41,7 +42,7 @@ class _SignInSrceenState extends State<SignInSrceen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(),
-      body: SingleChildScrollView(
+      body: wait ? SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(
               horizontal: getSize(true, .1), vertical: getSize(false, .05)),
@@ -79,7 +80,7 @@ class _SignInSrceenState extends State<SignInSrceen> {
             ],
           ),
         ),
-      ),
+      ): Center(child: CircularProgressIndicator()),
     );
   }
 
@@ -101,6 +102,9 @@ class _SignInSrceenState extends State<SignInSrceen> {
     }
 
     if (!isError) {
+      setState(() {
+        wait = false;
+      });
       onSigIn();
     }
   }
@@ -121,7 +125,7 @@ class _SignInSrceenState extends State<SignInSrceen> {
 
       // UserInfoModel.thirdInfo(userCredential.user!.uid);
 
-      getUser(userCredential.user!.uid);
+      await getUser(userCredential.user!.uid);
 
       Navigator.pushReplacement(
           context,

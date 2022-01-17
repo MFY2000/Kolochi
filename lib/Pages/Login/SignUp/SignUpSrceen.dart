@@ -122,10 +122,7 @@ class _SignUpSrceenState extends State<SignUpSrceen> {
         "uid": userCredential.user!.uid,
       });
 
-      String apiRoute = api_POST_UserDetails;
-
-      await postApi(apiRoute, data);
-
+      createNewUder(data, userCredential.user!.uid);
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
