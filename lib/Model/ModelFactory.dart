@@ -31,10 +31,6 @@ Future<bool> readJson() async {
   currentUser.address =
       getDataOfAddress(await getApi(api_GET_Address + currentUser.id));
 
-
-  if(currentUser.cartsId.isEmpty || currentUser.favouriteId.isEmpty){
-    await readJson();
-  }
   return true;
 }
 

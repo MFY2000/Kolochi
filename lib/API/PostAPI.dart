@@ -11,9 +11,11 @@ updateApi(String route, data) async {
 }
 
 postApi(String route, data) async {
-  return await http.post(
+  return http.post(
     Uri.parse(route),
     headers: {"Content-Type" : "application/json"},
     body: data,
-  );
+  ).then((value) => {
+    print("task done on time")
+  });
 }

@@ -34,7 +34,7 @@ class _CounterButtonState extends State<CounterButton> {
               },
               icon: Icon(Icons.add)),
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(getSize(true, 0.08)),
             child: Text("$count"),
             decoration: BoxDecoration(border: Border.all(color: kPrimaryLightColor, width: 5)),
           ),
