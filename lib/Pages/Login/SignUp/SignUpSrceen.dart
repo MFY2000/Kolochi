@@ -8,9 +8,9 @@ import 'package:fb_login_app/Config/Validition.dart';
 import 'package:fb_login_app/Config/constants.dart';
 import 'package:fb_login_app/Config/size_config.dart';
 import 'package:fb_login_app/Model/TextFeildModel.dart';
-import 'package:fb_login_app/Model/UserInfo.dart';
-import 'package:fb_login_app/Pages/Home/HomeScreen.dart';
+import 'package:fb_login_app/Model/ModelClasses.dart';
 import 'package:fb_login_app/Pages/Login/SocialMeida/SocialMedia.dart';
+import 'package:fb_login_app/Pages/MainScreen.dart';
 import 'package:fb_login_app/Services/DB_Services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -114,12 +114,12 @@ class _SignUpSrceenState extends State<SignUpSrceen> {
           .createUserWithEmailAndPassword(
               email: controller[1].value, password: controller[2].value);
 
-      (UserInfoModel(email: controller[1].value,name: controller[0].value,uid: userCredential.user!.uid)).StoreUserInfor();
+      // (UserInfoModel(email: controller[1].value,name: controller[0].value,uid: userCredential.user!.uid)).StoreUserInfor();
 
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (BuildContext context) =>HomeScreen(user: userCredential.user!)));
+              builder: (BuildContext context) => MainScreen()));//(user: userCredential.user!)));
     
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
