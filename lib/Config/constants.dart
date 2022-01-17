@@ -2,10 +2,14 @@ import 'package:fb_login_app/Config/size_config.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xFFFF8800);
+const kPrimaryColor2 = Color(0xFFFFBB33);
 const kPrimaryLightColor = Color(0xFFFFFFFF);
+
+const kSecondaryColor2 = Color(0XFFF3F3F3);
 const kSecondaryColor = Color(0XFF707070);
 const kTextColor = Color(0xFF757575);
 const kHeading = Colors.black;
+const khighLightColor = Colors.red;
 
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.center,
@@ -19,7 +23,13 @@ const defaultDuration = Duration(milliseconds: 250);
 const double fontSize = 16;
 const double headingfontSize = 23;
 const double iconSize = 12;
-const double kiconSize = 30;
+const double kiconSize = 24;
+
+const double discount = 4.5; 
+
+const List<String> kSizes = ["XS","S","M","L","XL"];
+const List<Color> kColors = [Colors.pink, Colors.red, Colors.red, Colors.red, Colors.red];
+
 
 const TextStyle headingStyle = TextStyle(
   fontSize: 18,
