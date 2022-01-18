@@ -107,12 +107,7 @@ setUserInfo(UserCredential user) async {
 }
 
 createNewUder(var data, var id) async {
-  bool rspone;
+  var respone = await postApi(api_POST_UserDetails, data);
 
-  rspone = await postApi(api_POST_UserDetails, data);
-  rspone = await postApi(api_POST_Favourite, jsonEncode({"userId": id, "products": []}));
-  rspone = await postApi(api_POST_Cart, jsonEncode({"userId": id, "products": []}));
-  rspone = await postApi(api_POST_Address, jsonEncode({"userId": id, "Address": []}));
-
-  print("$id all done $rspone");
+  print(respone["_id"]);
 }

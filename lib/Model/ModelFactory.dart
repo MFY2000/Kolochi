@@ -25,6 +25,7 @@ getProductData() async {
 }
 
 Future<bool> readJson() async {
+  print(api_GET_Cart + currentUser.id);
   getDataOfFavourite(await getApi(api_GET_Favourite + currentUser.id));
   getDataOfCart(await getApi(api_GET_Cart + currentUser.id));
 
@@ -139,6 +140,8 @@ getDataOfFavourite(var data) {
 
 getDataOfCart(var data) {
   cartList = [];
+  print(data);
+
   if (data != null) {
     currentUser.cartsId = data["_id"];
 
