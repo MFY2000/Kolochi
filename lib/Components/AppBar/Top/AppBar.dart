@@ -47,6 +47,16 @@ class TopAppBarState extends State<TopAppBar> {
                 },
               ),
             ),
+            actions: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                child: Icon(
+                  Icons.notifications,
+                  size: 20,
+                  
+                ),
+              )
+            ],
           ),
           body: widget.body,
           bottomNavigationBar: BottomAppBar2(
