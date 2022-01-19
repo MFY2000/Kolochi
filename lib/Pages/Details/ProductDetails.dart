@@ -298,7 +298,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   }
 
   goTo() {
-    if (!isAlreadyCart(
+    if (isAlreadyCart(
       itemdetails.pid,
       selected["Color"]["Selected"],
       selected["Size"]["Selected"],
