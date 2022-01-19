@@ -1,5 +1,10 @@
 // ignore_for_file: file_names
 
+import 'package:fb_login_app/Components/Custom/Cards/AddressCard.dart';
+import 'package:fb_login_app/Pages/Home/Profile.dart';
+import 'package:fb_login_app/Pages/Profile/Address/AddressScreen.dart';
+import 'package:fb_login_app/Pages/Profile/Address/CreateAddress.dart';
+import 'package:fb_login_app/Pages/Profile/Payment/PaymentScreen.dart';
 import 'package:fb_login_app/Services/Auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_login_app/Components/Custom/Button/ButtonColored.dart';
@@ -38,19 +43,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: getSize(true, .075),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () => togo(Profile()),
                 title: Text('Information'),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () => togo(AddressScreen()),
                 title: Text('Address'),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () => togo(CreateAddress()),
                 title: Text('Add New Address'),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () => togo(PaymentScreen()),
                 title: Text('Payment'),
               ),
               ListTile(
@@ -95,5 +100,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       isEdit = true;
     });
+  }
+
+  togo(Widget screen) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (BuildContext context) => screen));
   }
 }
