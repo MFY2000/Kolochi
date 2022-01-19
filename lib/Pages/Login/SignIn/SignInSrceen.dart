@@ -137,8 +137,7 @@ class _SignInSrceenState extends State<SignInSrceen> {
       if (e.code == 'user-not-found') {
         alertBox1(context, "user Not Found", 'No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        alertBox1(context, "Wrong Password",
-            'Wrong password provided for that user.');
+        alertBox1(context, "Wrong Password", 'Wrong password provided for that user.');
       }
     }
   }
