@@ -3,13 +3,13 @@
 const server = "https://serverkolachi.herokuapp.com/api";
 
 
-const api_GET_UserDetails = server+"/auth/find/";
 const api_GET_Product = server+"/products/";
+const api_GET_UserDetails = server+"/auth/find/";
 const api_GET_Favourite = server+"/favourite/find/";
 const api_GET_Cart = server+"/carts/find/";
-const api_GET_Order = server+"/orders/find/";
 const api_GET_Address = server+"/address/find/";
 const api_GET_Review = server+"/review/find/";
+const api_GET_Orders = server+"/orders/find/";
 
 
 
