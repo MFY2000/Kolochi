@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -36,11 +37,10 @@ class _ProfileState extends State<Profile> {
                             Container(
                                 width: 140.0,
                                 height: 140.0,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                    image:
-                                        NetworkImage('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'),
+                                    image: NetworkImage(currentUser.image),
                                     fit: BoxFit.cover,
                                   ),
                                 )),
@@ -134,6 +134,7 @@ class _ProfileState extends State<Profile> {
                                   decoration: const InputDecoration(
                                     hintText: "Enter Your Name",
                                   ),
+                                  controller: TextEditingController(text: currentUser.name),
                                   enabled: !_status,
                                   autofocus: !_status,
                                 ),
@@ -168,6 +169,7 @@ class _ProfileState extends State<Profile> {
                             children: <Widget>[
                               Flexible(
                                 child: TextField(
+                                  controller: TextEditingController(text: currentUser.email),
                                   decoration: const InputDecoration(
                                       hintText: "Enter Email ID"),
                                   enabled: !_status,
