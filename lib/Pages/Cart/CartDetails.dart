@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:fb_login_app/Components/Custom/Function/FunctionFactory.dart';
+import 'package:fb_login_app/Model/ModelClasses.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_login_app/Components/Custom/Button/ButtonColored.dart';
 import 'package:fb_login_app/Components/Custom/Cards/Cart/CartCard.dart';
@@ -25,6 +27,7 @@ class _CartDetailsState extends State<CartDetails> {
         children: [
           SingleChildScrollView(
             child: Container(
+              margin: EdgeInsets.only(bottom: getSize(false, .1)),
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.symmetric(
                   vertical: getSize(false, .025),
@@ -48,9 +51,9 @@ class _CartDetailsState extends State<CartDetails> {
                           itemBuilder: (context, index) => CartCard(
                               item: cartList[index],
                               onCounterChange: (int count) {
-                                counterChane(count, index);
+                                counterChane(count, cartList[index].pid);
                               },
-                              onRemove: () => removeCart(index),
+                              onRemove: () => removeCart(cartList[index].pid),
                               onClick: () => onProductClick(index)),
                         )
                       : const Text("No Item in the cart."),
@@ -59,7 +62,7 @@ class _CartDetailsState extends State<CartDetails> {
             ),
           ),
           Positioned(
-              bottom: getSize(false, .1),
+              bottom: getSize(false, .05),
               right: getSize(true, .05),
               left: getSize(true, .05),
               child: ButtonColored(
@@ -86,23 +89,25 @@ class _CartDetailsState extends State<CartDetails> {
     );
   }
 
-  removeCart(int index) {
+  removeCart(String index) {
     setState(() {
       cartList.removeWhere((element) => (element.pid == index));
+      carts();
     });
   }
 
-  counterChane(int count, int index) {
+  counterChane(int count, String index) {
     for (var item in cartList) {
       if (item.pid == index) {
         item.quantity = count;
       }
     }
+    carts();
   }
 
   toGo() {
     if (cartList.isNotEmpty) {
-      orderDetails.setOrderCart(cartList);
+      orderDetails = OrderDetails();
       Navigator.push(
         context,
         MaterialPageRoute(
