@@ -8,15 +8,14 @@ import 'package:fb_login_app/Pages/Login/SignUp/SignUpSrceen.dart';
 import 'package:flutter/material.dart';
 
 class IntroSrceen extends StatelessWidget {
-  const IntroSrceen({ Key? key }) : super(key: key);
+  const IntroSrceen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: IntroSrceenDetails(),
-      )
-    );
+        body: Center(
+      child: IntroSrceenDetails(),
+    ));
   }
 }
 
@@ -31,53 +30,55 @@ class _IntroSrceenDetailsState extends State<IntroSrceenDetails> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Welcome to "),
-                  Text(
-                    "Kolachi",
-                    style: Theme.of(context).textTheme.headline1,
-                  ),
-                ],
-              ),
-              Text(
-                "Explore Us",
-                style: Theme.of(context).textTheme.bodyText2,
-              ),
-            ],
-          ),
-          SizedBox(
-            child: Image.asset("assets/images/firstTime.png"),
-            width: getSize(true, 0.8),
-            height: getSize(false, 0.4),
-          ),
-          Column(
-            children: [
-              SizedBox(
-                width: getSize(true, .7),
-                child: ButtonColored(
-                    text: "Login",
-                    function: () {
-                      onClick(true);
-                    }),
-              ),
-              SizedBox(
-                height: getSize(false, .01),
-              ),
-              ButtonText(
-                  text: "Signup",
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Welcome to "),
+                Text(
+                  "Kolachi",
+                  style: Theme.of(context).textTheme.headline1,
+                ),
+              ],
+            ),
+            Text(
+              "Explore Us",
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+          ],
+        ),
+        SizedBox(
+          child: Image.asset("assets/images/firstTime.png"),
+          width: getSize(true, 0.8),
+          height: getSize(false, 0.4),
+        ),
+        Column(
+          children: [
+            SizedBox(
+              width: getSize(true, .7),
+              child: ButtonColored(
+                  text: "Login",
                   function: () {
-                    onClick(false);
-                  })
-            ],
-          ),
-        ],
-      );
+                    onClick(true);
+                  }),
+            ),
+            SizedBox(
+              height: getSize(false, .01),
+            ),
+            InkWell(
+              onTap: () => onClick(false),
+              child: SizedBox(
+                width: getSize(true, .7),
+                child: ButtonText(text: "Signup", function: () {}),
+              ),
+            )
+          ],
+        ),
+      ],
+    );
   }
 
   void onClick(bool direction) {
