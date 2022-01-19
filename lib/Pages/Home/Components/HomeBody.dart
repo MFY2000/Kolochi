@@ -26,9 +26,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   seeData() {
     if (!isData) {
-      setState(() {
-        
-      });
+      setState(() {});
     } else {
       Timer(const Duration(seconds: 3), seeData);
     }
@@ -39,7 +37,9 @@ class _HomeBodyState extends State<HomeBody> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SearchFeild(),
+          SearchFeild(
+            onChange: (value) => {},
+          ),
           SliderList(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: getSize(true, 0.05)),
