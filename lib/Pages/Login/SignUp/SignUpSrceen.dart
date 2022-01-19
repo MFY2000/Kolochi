@@ -122,12 +122,11 @@ class _SignUpSrceenState extends State<SignUpSrceen> {
         "uid": userCredential.user!.uid,
       });
 
-      createNewUder(data, userCredential.user!.uid);
-      Navigator.pushReplacement(
+      createNewUder(data);
+      Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  SignInSrceen())); //(user: userCredential.user!)));
+          MaterialPageRoute(builder: (BuildContext context) => const SignInSrceen()),
+          (route) => false); //(user: userCredential.user!)));
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
