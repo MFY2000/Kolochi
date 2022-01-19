@@ -28,6 +28,7 @@ dynamic cartSelected(String pid) {
     if (item.pid == pid) {
       selected[0] = item.selectedColor;
       selected[1] = item.selectedSize;
+      carts();
     }
   }
 
@@ -103,11 +104,64 @@ setUserInfo(UserCredential user) async {
     "profilePic": user.user!.photoURL
   });
 
-  await createNewUder(data, user.user!.uid);
+  await createNewUder(data);
 }
 
-createNewUder(var data, var id) async {
-  var respone = await postApi(api_POST_UserDetails, data);
+createNewUder(var data) async {
+  postApi(api_POST_UserDetails, data);
+}
 
-  print(respone["_id"]);
+addressToAdd() {
+  String apiRoute = api_POST_Address + currentUser.addressID;
+
+  List<Map<String, dynamic>> list = [];
+
+  for (var item in currentUser.address) {
+    list.add({
+      "Clientname": item.name,
+      "aid": item.aid,
+      "addressLane": item.addressLane,
+      "city": item.city,
+      "postalCode": item.postalCode,
+      "phoneNumber": item.phoneNumber,
+    });
+  }
+
+  var data = jsonEncode({"Address": list});
+  print(apiRoute);
+  updateApi(apiRoute, data);
+}
+
+placeOrder() {
+  String apiRoute = api_POST_Order;
+
+  var address = {
+    "Clientname": orderDetails.selectedAddress.name,
+    "aid": orderDetails.selectedAddress.aid,
+    "addressLane": orderDetails.selectedAddress.addressLane,
+    "city": orderDetails.selectedAddress.city,
+    "postalCode": orderDetails.selectedAddress.postalCode,
+    "phoneNumber": orderDetails.selectedAddress.phoneNumber,
+  };
+
+  List<Map<String, dynamic>> orderProduct = [];
+
+  for (var item in orderDetails.orderList) {
+    orderProduct.add({
+      "productId": item.pid,
+      "quantity": item.quantity,
+      "color": item.selectedColor,
+      "size": item.selectedSize,
+    });
+  }
+
+  var data = jsonEncode({
+    "userId": currentUser.id,
+    "address": address,
+    "products": orderProduct,
+    "amount": orderDetails.totalPrice
+  });
+
+  print(api_POST_Order);
+  postApi(apiRoute, data);
 }
