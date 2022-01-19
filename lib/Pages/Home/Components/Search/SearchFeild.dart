@@ -7,20 +7,24 @@ class SearchFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
-        padding: EdgeInsets.symmetric(
-            vertical: getSize(false, 0.035), horizontal: getSize(true, 0.05)),
+      decoration: BoxDecoration(
+          color: Colors.blue, borderRadius: BorderRadius.circular(100)),
+      margin: EdgeInsets.symmetric(
+          vertical: getSize(false, 0.025), horizontal: getSize(true, 0.015)),
+      child: Container(
+        width: getSize(false, 0.4),
+        height: getSize(true, 0.15),
         child: TextField(
           controller: TextEditingController(),
           decoration: const InputDecoration(
-            hintText: "| Search",
             prefixIcon: Icon(Icons.search),
+            hintText: "| Search",
             border: InputBorder.none,
-            // focusedBorder:
-            //     UnderlineInputBorder(borderSide: BorderSide.none),
-            // enabledBorder:
-            //     UnderlineInputBorder(borderSide: BorderSide.none),
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
