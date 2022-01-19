@@ -5,7 +5,6 @@ import 'package:fb_login_app/Components/Custom/Button/ButtonColored.dart';
 import 'package:fb_login_app/Components/Custom/Button/DottedOutline.dart';
 import 'package:fb_login_app/Components/Custom/Cards/AddressCard.dart';
 import 'package:fb_login_app/Config/size_config.dart';
-import 'package:fb_login_app/Model/ModelClasses.dart';
 import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:fb_login_app/Pages/Cart/Checkout.dart';
 import 'package:fb_login_app/Pages/Profile/Address/CreateAddress.dart';
@@ -18,7 +17,15 @@ class AddressScreen extends StatefulWidget {
 }
 
 class _AddressScreenState extends State<AddressScreen> {
-  int selectedIndex = 0;
+  int selectedIndex = 10000;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    
+  }
 
   @override
   Widget build(BuildContext context) {
