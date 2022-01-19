@@ -40,4 +40,11 @@ class _MainScreenState extends State<MainScreen> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
   }
+
+
+  refresh(){
+    setState(() {
+      print("refresh");
+    });
+  }  
 }
