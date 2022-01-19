@@ -46,7 +46,7 @@ class CartCard extends StatelessWidget {
               ),
             ),
             Container(
-              width: getSize(true, 0.29),
+              width: getSize(true, 0.38),
               height: getSize(false, 0.15),
               alignment: Alignment.centerLeft,
               child: Column(
