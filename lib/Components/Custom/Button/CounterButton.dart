@@ -24,7 +24,7 @@ class _CounterButtonState extends State<CounterButton> {
   Widget build(BuildContext context) {
     return Container(
       color: kSecondaryColor2,
-      width: getSize(true, 0.33),
+      width: getSize(true, 0.38),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
