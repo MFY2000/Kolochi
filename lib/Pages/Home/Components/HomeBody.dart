@@ -26,7 +26,9 @@ class _HomeBodyState extends State<HomeBody> {
 
   seeData() {
     if (!isData) {
-      setState(() {});
+      setState(() {
+        print("Hello");
+      });
     } else {
       Timer(const Duration(seconds: 3), seeData);
     }
