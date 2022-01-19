@@ -1,5 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors
 
+import 'package:fb_login_app/Components/AppBar/Bottom/circularTotal.dart';
+import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_login_app/Components/AppBar/Top/AppBar.dart';
 import 'package:fb_login_app/Config/constants.dart';
@@ -47,11 +49,13 @@ class _BottomAppBar2State extends State<BottomAppBar2> {
       showUnselectedLabels: false,
       items: [
         // getNavItem(),
-        getNavItem(Icons.shopping_bag_outlined, "shopping_bag",const CartDetails(), 0),
-        getNavItem(Icons.favorite_border, "favorite", const FavouriteScreen(), 1),
-        getNavItem(Icons.home_outlined, "home", const HomeBody(), 2),
-        getNavItem(Icons.search_outlined, "search", const Search(), 3),
-        getNavItem(Icons.person_outline, "person", const ProfileScreen(), 4,),
+        getNavItem(Icons.shopping_bag_outlined, "shopping_bag",
+            const CartDetails(), 0, cartList.length),
+        getNavItem(Icons.favorite_border, "favorite", const FavouriteScreen(),
+            1, favouriteList.length),
+        getNavItem(Icons.home_outlined, "home", const HomeBody(), 2, 0),
+        getNavItem(Icons.search_outlined, "search", const Search(), 3, 0),
+        getNavItem(Icons.person_outline, "person", const ProfileScreen(), 4, 0),
       ],
     );
   }
@@ -61,11 +65,14 @@ class _BottomAppBar2State extends State<BottomAppBar2> {
         context, MaterialPageRoute(builder: (context) => screen));
   }
 
-  getNavItem(IconData icon, String name, Widget screen, int index) {
+  getNavItem(IconData icon, String name, Widget screen, int index, int value) {
     return BottomNavigationBarItem(
-      icon: IconButton(
-        onPressed: () => toGoPath(TopAppBar(body: screen, index: index)),
-        icon: Icon(icon, size: kiconSize),
+      icon: circularTotal(
+        index: value,
+        main: IconButton(
+          onPressed: () => toGoPath(TopAppBar(body: screen, index: index)),
+          icon: Icon(icon, size: kiconSize),
+        ),
       ),
       label: name,
     );
