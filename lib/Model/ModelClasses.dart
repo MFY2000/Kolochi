@@ -85,15 +85,16 @@ class UserInformation {
   List<AdressModel> address;
   late String cartsId, favouriteId, addressID;
 
-  UserInformation({
-      required this.uid,
+  UserInformation(
+      {required this.uid,
       required this.id,
       required this.name,
       required this.email,
       required this.image,
       required this.address});
 
-  addNewAddress(String name, String addressLane, String city, String postalCode, String phoneNumber) {
+  addNewAddress(String name, String addressLane, String city, String postalCode,
+      String phoneNumber) {
     address.add(AdressModel(
         name: name,
         aid: generateRandomString(7),
@@ -101,6 +102,8 @@ class UserInformation {
         city: city,
         postalCode: postalCode,
         phoneNumber: phoneNumber));
+
+    addressToAdd();
   }
 }
 
@@ -124,8 +127,12 @@ class OrderDetails {
   late List<CartsDetailsModel> orderList;
   // late Payment
 
-  setOrderCart(List<CartsDetailsModel> orderList) {
-    orderList = orderList;
+  OrderDetails() {
+    orderList = cartList;
+    cartList.isNotEmpty ? getprice() : null;
+  }
+
+  getprice() {
     price = 0;
     for (var item in orderList) {
       price += item.price * item.quantity;
@@ -136,7 +143,12 @@ class OrderDetails {
     totalPrice = num.parse(totalPrice.toStringAsFixed(2));
   }
 
-  orderPlace() {}
+  orderPlace() {
+    placeOrder();
+    cartList = [];
+    carts();
+    orderDetails = OrderDetails();
+  }
 }
 
 class CreateAddressModel {
