@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:fb_login_app/Pages/Home/Components/Search/SearchFeild.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_login_app/Components/Custom/Cards/Product/ProductCard_2.dart';
 import 'package:fb_login_app/Components/Custom/Function/FunctionFactory.dart';
@@ -32,18 +33,9 @@ class _SearchState extends State<Search> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-              padding: EdgeInsets.symmetric(
-                  vertical: getSize(false, 0.035),
-                  horizontal: getSize(true, 0.05)),
-              child: TextField(
-                  controller: searchFeild,
-                  decoration: const InputDecoration(
-                    hintText: "| Search",
-                    prefixIcon: Icon(Icons.search),
-                  ),
-                  onChanged: search,
-                  enableInteractiveSelection: false)),
+          SearchFeild(
+            onChange: search,
+          ),
           GridView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
