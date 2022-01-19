@@ -18,6 +18,8 @@ late UserInformation currentUser;
 late OrderDetails orderDetails = OrderDetails();
 late CreateAddressModel newAddressModel;
 
+late bool isData = true;
+
 getProductData() async {
   topPromoList = await getProduct(api_GET_Product + "?new=TRUE");
   productsList = await getProduct(api_GET_Product);
@@ -31,6 +33,8 @@ Future<bool> readJson() async {
   currentUser.address =
       getDataOfAddress(await getApi(api_GET_Address + currentUser.id));
 
+  isData = false;
+  
   return true;
 }
 
