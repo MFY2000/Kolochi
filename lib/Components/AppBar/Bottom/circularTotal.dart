@@ -11,20 +11,24 @@ class circularTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-            top: 5,
-            right: 5,
-            child: CircleAvatar(
-              backgroundColor: kPrimaryColor2,
-              child: Text(
-                "$index",
-                style: const TextStyle(fontSize: 10, color: khighLightColor),
-              ),
-            )),
-        Expanded(child: main)
-      ],
-    );
+    return index != 0
+        ? Stack(
+            children: [
+              Positioned(
+                  top: 5,
+                  right: 5,
+                  child: CircleAvatar(
+                    radius: 6.5,
+                    backgroundColor: kPrimaryColor2,
+                    child: Text(
+                      "$index",
+                      style: const TextStyle(
+                          fontSize: 10, color: kPrimaryLightColor),
+                    ),
+                  )),
+              main
+            ],
+          )
+        : main;
   }
 }
