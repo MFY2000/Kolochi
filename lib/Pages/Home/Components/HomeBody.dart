@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:fb_login_app/Config/size_config.dart';
+import 'package:fb_login_app/Model/ModelFactory.dart';
 import 'package:fb_login_app/Pages/Home/Components/ProductDisplay/GirdProduct.dart';
 import 'package:fb_login_app/Pages/Home/Components/ProductDisplay/HeaderHeading.dart';
 import 'package:fb_login_app/Pages/Home/Components/ProductDisplay/TopBanner.dart';
@@ -14,6 +17,23 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    seeData();
+  }
+
+  seeData() {
+    if (!isData) {
+      setState(() {
+        
+      });
+    } else {
+      Timer(const Duration(seconds: 3), seeData);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
