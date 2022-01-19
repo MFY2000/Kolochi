@@ -143,7 +143,6 @@ getDataOfFavourite(var data) {
 
 getDataOfCart(var data) {
   cartList = [];
-  print(data);
 
   if (data != null) {
     currentUser.cartsId = data["_id"];
@@ -153,7 +152,7 @@ getDataOfCart(var data) {
           item["productId"], item["quantity"], item["size"], item["color"]));
     }
   } else {
-    postApi(api_POST_Favourite,
+    postApi(api_POST_Cart,
         jsonEncode({"userId": currentUser.id, "products": []}));
   }
 }
