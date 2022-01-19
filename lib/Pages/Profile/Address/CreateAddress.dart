@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:fb_login_app/Components/Custom/Alert/AlertBox1.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_login_app/Components/Custom/Button/ButtonColored.dart';
 import 'package:fb_login_app/Components/Custom/TextFeild/TextFeild_1.dart';
@@ -77,12 +78,12 @@ class _CreateAddressState extends State<CreateAddress> {
       currentUser.addNewAddress(newAddressModel.name.control.text, newAddressModel.address.control.text,
           newAddressModel.city.control.text, newAddressModel.postal.control.text, newAddressModel.phone.control.text);
 
-      Navigator.push(
+      Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const AddressScreen()),
-      );
+        MaterialPageRoute(builder: (context) => const AddressScreen()),(route) => false);
+
     } else {
-      print("Error");
+      alertBox1(context, "Error", "Error");
     }
   }
 
