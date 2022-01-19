@@ -1,5 +1,7 @@
 import 'package:fb_login_app/Components/AppBar/Top/AppBar.dart';
+import 'package:fb_login_app/Model/ModelClasses.dart';
 import 'package:fb_login_app/Pages/Cart/CartDetails.dart';
+import 'package:fb_login_app/Pages/Cart/OrderDetails.dart';
 import 'package:fb_login_app/Pages/Favourite/FavouriteScreen.dart';
 import 'package:fb_login_app/Pages/Home/Components/HomeBody.dart';
 import 'package:fb_login_app/Pages/Home/Profile.dart';
@@ -58,16 +60,17 @@ class CustomDrawer extends StatelessWidget {
             getNavItem(context, Icons.favorite_border, 'Favourites',
                 FavouriteScreen(), index),
             getNavItem(context, Icons.shopping_cart_outlined, 'My Order',
-                Container(), index),
+                OrderDetailsScreen(), 4),
             Container(
               decoration: const BoxDecoration(
                   border: Border(
                 bottom: BorderSide(width: 1, color: kPrimaryLightColor),
               )),
             ),
-            getNavItem(context, Icons.euro_symbol, 'Language', Container(), index),
             getNavItem(
-                context, Icons.settings_outlined, 'Settings', Container(), index),
+                context, Icons.euro_symbol, 'Language', Container(), 4),
+            getNavItem(context, Icons.settings_outlined, 'Settings',
+                Container(), index),
             InkWell(
               onTap: () async {
                 await AuthClass().signOut(context: context);
@@ -85,7 +88,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             DefaultTextStyle(
               style: const TextStyle(
                 fontSize: 10,
