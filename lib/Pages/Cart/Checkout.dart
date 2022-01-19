@@ -84,6 +84,8 @@ class _CheckoutState extends State<Checkout> {
   }
 
   toGo() {
+    orderDetails.orderPlace();
+    
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const Confirmation()));
   }
